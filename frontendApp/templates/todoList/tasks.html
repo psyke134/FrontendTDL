@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Login Form Example</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'><link rel="stylesheet" href="{% static 'todoList/style.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="header">
+  <button type="submit" class="log-out-button" form="log-out-form">Log out</button>
+  <form action="{% url 'frontendApp:LogoutController'%}" class="hidden" method="post" id="log-out-form"></form>
+</div>
+<div class="task-box">
+  <h1>Welcome, {{ name }}</h1>
+  <form action="{% url 'frontendApp:NewTaskController'%}" method="post">
+    <div class="input-field">
+      <input placeholder="Add your new todo" name="taskText">
+      <button type="submit">Add</button>
+    </div>
+  </form>
+  
+  <div class="task-list">
+    <ul>
+      {% for task in taskList %}
+        <li class="task-entry">
+          {{ task }}
+          <button class="delete-button" form="delete-form" name="taskText" value="{{ task }}">-</button>
+        </li>
+      {% endfor %}
+    </ul>
+    <form action="{% url 'frontendApp:DeleteTaskController'%}" class="hidden" method="post" id="delete-form"></form>
+  </div>
+</div>
+<!-- partial -->
+  <script  src="{% static 'todoList/script.js' %}"></script>
+
+</body>
+</html>

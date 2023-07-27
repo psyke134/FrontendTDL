@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Login Form Example</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'><link rel="stylesheet" href="{% static 'todoList/style.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="error-box">
+  <p class="error-status">{{ status }}</p>
+  <p class="error-desc">{{ desc }}</p>
+  <br>
+  <p class="error-msg">{{ msg }}</p>
+  <p class="error-guide">You can click <a href="{% url 'frontendApp:Home' %}">here</a> to exit this page</p>
+</div>
+<!-- partial -->
+  <script  src="{% static 'todoList/script.js' %}"></script>
+
+</body>
+</html>

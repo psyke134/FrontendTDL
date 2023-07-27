@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Login Form Example</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'><link rel="stylesheet" href="{% static 'todoList/style.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="form">
+  <form action="{% url 'frontendApp:LoginController'%}" method="post">
+    <h1>Login</h1>
+    {% if loginError %}
+      <br>
+      <span class="error">{{ loginError }}</span>
+    {% endif %}
+    <div class="content">
+      <div class="input-field">
+        <input type="text" placeholder="username" autocomplete="nope" name="username">
+      </div>
+      <div class="input-field">
+        <input type="password" placeholder="Password" autocomplete="new-password" name="password">
+      </div>
+    </div>
+    <div class="action">
+      <button type="submit" form="register-form">Register</button>
+      <button type="submit">Sign in</button>
+    </div>
+  </form>
+  <form action="{% url 'frontendApp:RegisterView'%}" class="hidden" id="register-form"></form>
+</div>
+<!-- partial -->
+  <script  src="{% static 'todoList/script.js' %}"></script>
+
+</body>
+</html>
