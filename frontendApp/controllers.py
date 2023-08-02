@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from .backendAccess import BackendAccess
+import json
 
 class TaskControllers:
     @classmethod
@@ -105,7 +106,7 @@ class UpdateAPI:
     def backendServerUpdate(self, request):
         """Should be called when a backend server becomes active"""
 
-        if request.method != "post":
+        if request.method != "POST":
             return JsonResponse({"Error": "Only POST is allowed"}, status=405)
 
         data = json.loads(request.body)
@@ -118,7 +119,7 @@ class UpdateAPI:
             return JsonResponse({"Error": "Missing server infos"}, status=404)
 
         BackendAccess.updateInfo(backendServerIP, port, protocol)
-        return JsonResponse({"Message": "Successfully created account"}, status=200)
+        return JsonResponse({"Message": "Successfully update active backend server info"}, status=200)
 
 class Utils:
     @staticmethod

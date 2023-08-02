@@ -2,7 +2,7 @@ import requests, json
 
 class BackendAccess:
     invalidIP = "255.255.255.255"
-    backendServerIP = "192.168.56.139"
+    backendServerIP = invalidIP
     protocol = "http"
     port = "8888"
     headers = {'Content-Type': 'application/json'}
@@ -58,6 +58,7 @@ class BackendAccess:
 
         return BackendAccess.request(url, "post", json.dumps(data), BackendAccess.headers, BackendAccess.timeout)
 
+    @staticmethod
     def deleteTask(username, taskText):
         addr = BackendAccess.getServerAddress()
         url = addr + "backend/task/delete/"
@@ -65,6 +66,7 @@ class BackendAccess:
 
         return BackendAccess.request(url, "delete", json.dumps(data), BackendAccess.headers, BackendAccess.timeout)
 
+    @staticmethod
     def getTasksOf(username):
         addr = BackendAccess.getServerAddress()
         url = addr + "backend/task/"
@@ -72,6 +74,7 @@ class BackendAccess:
 
         return BackendAccess.request(url, "get", json.dumps(data), BackendAccess.headers, BackendAccess.timeout)
 
+    @staticmethod
     def authenticate(username, password):
         addr = BackendAccess.getServerAddress()
         url = addr + "backend/account/authenticate/"
@@ -79,6 +82,7 @@ class BackendAccess:
 
         return BackendAccess.request(url, "post", json.dumps(data), BackendAccess.headers, BackendAccess.timeout)
 
+    @staticmethod
     def register(name, username, password):
         addr = BackendAccess.getServerAddress()
         url = addr + "backend/account/register/"
