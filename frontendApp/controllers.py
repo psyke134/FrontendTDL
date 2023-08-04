@@ -101,6 +101,18 @@ class AccountControllers:
 
         return HttpResponseRedirect(reverse("frontendApp:LoginView"))
 
+class DebugAPI:
+    @classmethod
+    def backendServerShow(self, request):
+        """Return a json object containing backend server's infos"""
+        data = {}
+        data["backendServerIP"] = BackendAccess.backendServerIP
+        data["protocol"] = BackendAccess.protocol
+        data["port"] = BackendAccess.port
+        data["timeout"] = BackendAccess.timeout
+
+        return JsonResponse(data, status=200)
+
 class UpdateAPI:
     @classmethod
     def backendServerUpdate(self, request):

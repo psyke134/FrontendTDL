@@ -15,4 +15,5 @@ urlpatterns = [
     path("controller/deleteTask/", controllers.TaskControllers.deleteTask, name="DeleteTaskController"),
     path("view/error/", views.error, name="ErrorView"),
     path("controller/backendServerUpdate/", controllers.UpdateAPI.backendServerUpdate, name="BackendServerUpdateController"),
+    path("debug/backendServerShow/", controllers.DebugAPI.backendServerShow, name="BackendServerShowController"),
 ]
